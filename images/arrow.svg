@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="57px" height="82px" viewBox="0 0 57 82" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path d="M0 0L90.25 0L90.25 129.833L0 129.833L0 0Z" id="path_1" />
+    <clipPath id="mask_1">
+      <use xlink:href="#path_1" />
+    </clipPath>
+  </defs>
+  <g id="ipad元素4">
+    <g id="arrow--thin_big_down" transform="translate(0 -47.833336)">
+      <path d="M0 0L90.25 0L90.25 129.833L0 129.833L0 0Z" id="arrow--thin_big_down-(BackgroundMask)" fill="none" fill-rule="evenodd" stroke="none" />
+      <g clip-path="url(#mask_1)">
+        <path d="M19.1125 0L0 15.4376L19.1125 30.875L21.1917 29.1956L5.62839 16.6249L60.7896 16.625L62.7347 16.625L82.0008 16.625L82.0008 14.25L66.3912 14.25L5.62865 14.2499L21.1917 1.67938L19.1125 0Z" transform="matrix(-4.371139E-08 -1 1 -4.371139E-08 15.437499 129.8346)" id="arrow--thin_big_down" fill="#063888" fill-rule="evenodd" stroke="none" />
+      </g>
+    </g>
+  </g>
+</svg>

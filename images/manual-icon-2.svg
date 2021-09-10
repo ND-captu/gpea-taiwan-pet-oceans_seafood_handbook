@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="53px" height="47px" viewBox="0 0 53 47" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <g id="phone元素4" transform="translate(0.4248047 0.42504883)">
+    <path d="M7.57457 3.81107C7.57457 3.81107 -1.28236 4.71239 0.1585 2.2515C1.77603 -0.512635 9.60691 1.35981 9.60691 1.35981L13 0L11.4801 2.43562L13 5L9.60911 3.91095" transform="translate(15 2)" id="Fill-1" fill="#EAC941" fill-rule="evenodd" stroke="none" />
+    <g id="Group-6" transform="translate(0 23)">
+      <path d="M6.58478 1.541C6.58478 1.541 18.7019 0.3082 26.2747 5.2394C26.2747 5.2394 37.3326 0 51.2675 0L45.9657 19.5695C45.9657 19.5695 29.3043 18.0285 24.1551 21.7258C24.1551 21.7258 10.227 15.5629 0 17.8744L4.46522 6.93335" transform="translate(0.68187827 0.79718)" id="Fill-3" fill="#EAC941" fill-rule="evenodd" stroke="none" />
+      <path d="M6.58478 1.541C6.58478 1.541 18.7019 0.3082 26.2747 5.2394C26.2747 5.2394 37.3326 0 51.2675 0L45.9657 19.5695C45.9657 19.5695 29.3043 18.0285 24.1551 21.7258C24.1551 21.7258 10.227 15.5629 0 17.8744L4.46522 6.93335" transform="translate(0.68187827 0.79718)" id="Stroke-5" fill="none" fill-rule="evenodd" stroke="#234F9D" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <path d="M7.57457 3.81107C7.57457 3.81107 -1.28236 4.71239 0.1585 2.2515C1.77603 -0.512635 9.60691 1.35981 9.60691 1.35981L13 0L11.4801 2.43562L13 5L9.60911 3.91095" transform="translate(15 2)" id="Stroke-7" fill="none" fill-rule="evenodd" stroke="#234F9D" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M7.59939 3.81107C7.59939 3.81107 -1.50321 4.47894 0.216155 2.2515C1.93552 0.022864 9.62243 1.35981 9.62243 1.35981L13 0L11.4871 2.43562L13 5L9.62462 3.91095" transform="translate(32 8)" id="Stroke-9" fill="none" fill-rule="evenodd" stroke="#234F9D" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M7.53873 3.81015C7.53873 3.81015 -0.861951 4.99158 0.0725629 2.25096C1.06783 -0.6641 9.5845 1.35948 9.5845 1.35948L13 0L11.4701 2.43503L13 5L9.58671 3.91001" transform="translate(18 16)" id="Stroke-11" fill="none" fill-rule="evenodd" stroke="#234F9D" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M2 1C2 1.55237 1.55237 2 1 2C0.447628 2 0 1.55237 0 1C0 0.447628 0.447628 0 1 0C1.55237 0 2 0.447628 2 1Z" transform="translate(13 15)" id="Stroke-13" fill="none" fill-rule="evenodd" stroke="#234F9D" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M3 1.5C3 2.32788 2.32788 3 1.5 3C0.672125 3 0 2.32788 0 1.5C0 0.672125 0.672125 0 1.5 0C2.32788 0 3 0.672125 3 1.5Z" transform="translate(35 -2.2737368E-13)" id="Stroke-15" fill="none" fill-rule="evenodd" stroke="#234F9D" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M5 2.50056C5 3.88045 3.88156 5 2.50056 5C1.11955 5 0 3.88045 0 2.50056C0 1.11955 1.11955 0 2.50056 0C3.88156 0 5 1.11955 5 2.50056Z" transform="translate(35 22)" id="Stroke-17" fill="none" fill-rule="evenodd" stroke="#234F9D" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>
