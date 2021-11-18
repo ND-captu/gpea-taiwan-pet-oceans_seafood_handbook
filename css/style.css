@@ -193,10 +193,10 @@ input[type="button"] {
       -ms-flex-pack: center;
           justify-content: center;
   background-color: #ff8100;
-  border-radius: 6.66666667vw;
+  border-radius: 5px;
 }
 .btn:hover {
-  background-color: #eb7700;
+  background-color: #ffb660;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -218,7 +218,7 @@ input[type="button"] {
     font-size: 1rem;
   }
   .btn:hover {
-    background-color: #eb7700;
+    background-color: #ffb660;
   }
 }
 .btn--multiline {
