@@ -12,7 +12,7 @@ var change_server = "https://change.greenpeace.org.tw/2021/site/seafood/";
 			}`
 		;
 		document.head.appendChild(style);
-			
+
 		if (document.querySelector('#MobilePhone'))
 			document.querySelector('#MobilePhone').removeAttribute("required");
 	} else { // not in the DD page
@@ -57,22 +57,22 @@ const hide_donate_btn = (elementId) => {
 }
 
 /**
- * Call this function to generate QR cde on DD page. 
+ * Call this function to generate QR cde on DD page.
  * It would generates the tp/tc/ks QR code according to the utm_content parameter of url, for example: xxx?XXX&utm_content=tp
  * Expected parameter: the element Id that can contain QR code.
  * For example: you have a div element on DD page: `<div id="QR-code-block"></div>`
  * and you can generate QR code in this div through calling this function: `line_QR_code('QR-code-block')`
  */
-const line_QR_code = (elementId) => {		
-	if (window.location.href.indexOf("utm_source=dd") >= 0) {		
+const line_QR_code = (elementId) => {
+	if (window.location.href.indexOf("utm_source=dd") >= 0) {
 		let line_block_id = elementId;
-		
+
 		if (line_block_id.indexOf('#') < 0) {
 			line_block_id = '#' + line_block_id;
-		}		
+		}
 
 		document.querySelector(line_block_id).innerHTML =
-			`<div class="line-div is-show-at-dd-page-only" style="text-align: center; margin: 1.5rem 0;">				
+			`<div class="line-div is-show-at-dd-page-only" style="text-align: center; margin: 1.5rem 0;">
 				<div class="line-tp">
 					<a href='http://act.gp/GPLINE_tp' target='_blank' style='color: #00c300; text-decoration: none;'>加入我們的 LINE 好友<br>
 					<img src="https://change.greenpeace.org.tw/2021/petition/example/images/act.gp_GPLINE_tp.png" style="width:100%; max-width:256px;" /></a>
@@ -86,7 +86,7 @@ const line_QR_code = (elementId) => {
 					<img src="https://change.greenpeace.org.tw/2021/petition/example/images/act.gp_GPLINE_ks.png" style="width:100%; max-width:256px;" /></a>
 				</div>
 			</div>`;
-		
+
 		if (window.location.href.indexOf("utm_content=tp") >= 0) {
 			document.querySelector('.line-tp').style.display = "block";
 			document.querySelector('.line-tc').style.display = "none";
@@ -94,7 +94,7 @@ const line_QR_code = (elementId) => {
 		} else if (window.location.href.indexOf("utm_content=tc")) {
 			document.querySelector('.line-tp').style.display = "none";
 			document.querySelector('.line-tc').style.display = "block";
-			document.querySelector('.line-ks').style.display = "none";		
+			document.querySelector('.line-ks').style.display = "none";
 		} else {
 			document.querySelector('.line-tp').style.display = "none";
 			document.querySelector('.line-tc').style.display = "none";
@@ -110,19 +110,29 @@ $(document).ready(function(){
     easing: 'ease-out',
     anchorPlacement: 'top-center'
   });
-
-  var slider = new Swiper("#manualSlider", {
+  var kvslider;
+  var formboxslider;
+  var donateslider;
+  var slider;
+  var swipersetting = {
     effect: "fade",
     speed: 500,
     autoplay:{
       delay: 5000,
     },
     pagination:{
-      el: "#manualSlider .swiper-pagination",
-      clickable: true
+      el: ".swiper-pagination",
+      clickable: true,
     },
-    loop: true
-  });
+    // loop: true
+  };
+
+  kvslider = new Swiper("#kvSlider", swipersetting);
+  formboxslider1 = new Swiper("#formboxSlider1", swipersetting);
+  formboxslider2 = new Swiper("#formboxSlider2", swipersetting);
+  donateslider = new Swiper("#donateSlider", swipersetting);
+  slider = new Swiper("#manualSlider", swipersetting);
+
 
 
   $('.submit-btn').on('click', function(e){
@@ -131,7 +141,16 @@ $(document).ready(function(){
     signSubmit();
   });
 
-  $('[data-preview]').on('click', function(e){
+
+  $('#kvSlider [data-preview], #formboxSlider1 [data-preview], #formboxSlider2 [data-preview]').on('click', function(e){
+    e.preventDefault();
+    openPreviewKv($(this).attr('data-preview'));
+  });
+  $('#donateSlider [data-preview]').on('click', function(e){
+    e.preventDefault();
+    openPreviewDonate($(this).attr('data-preview'));
+  });
+  $('#manualSlider [data-preview]').on('click', function(e){
     e.preventDefault();
     openPreview($(this).attr('data-preview'));
   });
@@ -140,31 +159,60 @@ $(document).ready(function(){
     openBox('#'+$(this).attr('data-box'));
   });
 
-  $('.box__close, .box__cover').on('click', function(e){
+  $('#formBox .box__close, #formBox .box__cover, #thanksBox .box__close, #thanksBox .box__cover').on('click', function(e){
+    e.preventDefault();
+    closeBoxFrame();
+  });
+  $('#previewBox .box__close, #previewBox .box__cover').on('click', function(e){
     e.preventDefault();
     closeBox();
   });
 
-  function openPreview(page){
+  function openPreviewKv(page){
     $('.previewbox__frame').attr('class', 'previewbox__frame previewbox__frame--' + page);
-    $('.previewbox__pic').attr('src', change_server + 'images/slider-' + page + '.jpg');
-    
+    $('.previewbox__pic').attr('src', change_server + 'images/kvslider-' + page + '.jpg');
+
     $('#previewBox').fadeIn();
     $('.previewbox__container').scrollTop(0);
     $('.previewbox__container').scrollLeft(0);
     $('body').addClass('noscroll');
-   
+  }
+  function openPreviewDonate(page){
+    $('.previewbox__frame').attr('class', 'previewbox__frame previewbox__frame--' + page);
+    $('.previewbox__pic').attr('src', change_server + 'images/donateslider-' + page + '.png');
+
+    $('#previewBox').fadeIn();
+    $('.previewbox__container').scrollTop(0);
+    $('.previewbox__container').scrollLeft(0);
+    $('body').addClass('noscroll');
+  }
+  function openPreview(page){
+    $('.previewbox__frame').attr('class', 'previewbox__frame previewbox__frame--' + page);
+    $('.previewbox__pic').attr('src', change_server + 'images/slider-' + page + '.jpg');
+
+    $('#previewBox').fadeIn();
+    $('.previewbox__container').scrollTop(0);
+    $('.previewbox__container').scrollLeft(0);
+    $('body').addClass('noscroll');
   }
 
+  function closeBoxFrame(){
+    $('.box--frame').fadeOut();
+    $('body').removeClass('noscroll');
+  }
   function closeBox(){
-    $('.box').fadeOut();
+    $('.box--preview').fadeOut();
     $('body').removeClass('noscroll');
   }
 
   function openBox(boxid){
-    $(boxid).fadeIn();
-    $('#formBox .formbox__inner, #thanksBox .formbox__inner').scrollTop(0);
+    $(boxid).fadeIn(400, function(){
+      formboxslider1 = new Swiper("#formboxSlider1", swipersetting);
+      formboxslider2 = new Swiper("#formboxSlider2", swipersetting);
+      donateslider = new Swiper("#donateSlider", swipersetting);
 
+    });
+    $('#formBox .formbox__inner, #thanksBox .formbox__inner').scrollTop(0);
     $('body').addClass('noscroll');
   }
 
@@ -177,7 +225,7 @@ $(document).ready(function(){
   var ps2 = new PerfectScrollbar('#thanksBox .formbox__inner',{
     wheelPropagation: false,
     suppressScrollX: true,
-    maxScrollbarLength: 100
+    maxScrollbarLength: 100,
   });
 
   $('.form__select').on('change', function(){
@@ -202,7 +250,7 @@ $(document).ready(function(){
     obj.add(new Option(currYear-i, `${currYear-i}-01-01`));
   }
 
-  
+
 
   // form
 
@@ -221,7 +269,7 @@ $(document).ready(function(){
       pass = false;
       $(`<span class="error-message">請不要輸入數字或符號</span>`).insertAfter("#LastName");
     }
-    
+
 
     if (!FirstName.value) {
       pass = false;
@@ -245,8 +293,8 @@ $(document).ready(function(){
       pass = false;
       $(`<span class="error-message">必填欄位</span>`).insertAfter("#MobilePhone");
     }
-    else if (MobilePhone.value 
-        && ! /^(0|886|\+886)?(9\d{8})$/.test(MobilePhone.value) 
+    else if (MobilePhone.value
+        && ! /^(0|886|\+886)?(9\d{8})$/.test(MobilePhone.value)
         && ! /^(0|886|\+886){1}[3-8]-?\d{6,8}$/.test(MobilePhone.value)
         && ! /^(0|886|\+886){1}[2]-?\d{8}$/.test(MobilePhone.value)) {
       pass = false;
@@ -256,7 +304,7 @@ $(document).ready(function(){
       $('#MobilePhone').attr('placeholder', '');
     }else{
       $('#MobilePhone').attr('placeholder', phonePlaceText);
-      
+
     }
 
     if (Birthdate.value == "") {
@@ -270,7 +318,7 @@ $(document).ready(function(){
       $('.error-message').siblings('input').val('');
     }
     return pass;
-  }  
+  }
 
   function checkEmail() {
       let domains = [
@@ -296,9 +344,9 @@ $(document).ready(function(){
           email: email.value,
           domains: domains,                       // optional
           topLevelDomains: topLevelDomains,       // optional
-          suggested: function(suggestion) {		
+          suggested: function(suggestion) {
             email.insertAdjacentHTML('afterend', `<div class="suggestion" id="email-suggestion">您想輸入的是 <strong id="emailSuggestion">${suggestion.full}</strong> 嗎？</div>`);
-            
+
             document.querySelectorAll(".email-error-message").forEach((elem) => elem.remove());
             setTimeout(function(){
               $("#email-suggestion").fadeOut(function(){
@@ -308,7 +356,7 @@ $(document).ready(function(){
             document.getElementById("email-suggestion").onclick = function() {
               email.value = document.getElementById("emailSuggestion").innerText;
               document.getElementById("email-suggestion").remove();
-              
+
             };
           },
           empty: function() {
@@ -326,19 +374,19 @@ $(document).ready(function(){
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
       </div>`);
     }
-  
+
     setTimeout(() => { // to enable the transition
       document.querySelector("#page-loading").classList.remove("hide")
     }, 0)
   }
   const hideFullPageLoading = () => {
     document.querySelector("#page-loading").classList.add("hide")
-  
+
     setTimeout(() => {
       document.querySelector("#page-loading").remove()
     }, 1100)
-  }            
-  
+  }
+
   const sendPetitionTracking = (eventLabel, eventValue) => {
 	console.log('sPT');
 	window.dataLayer = window.dataLayer || [];
@@ -365,13 +413,13 @@ $(document).ready(function(){
     }
       if (!checkInput())
           return;
-    
+
     if(window.location.href.indexOf('demo') >= 0 || window.location.href.indexOf('localhost') >= 0){
-      closeBox();     
+      closeBox();
       openBox('#thanksBox');
       return;
     }
-        
+
       showFullPageLoading();
     let formData = new FormData();
     document.querySelectorAll("#sign-form input,select").forEach(function (el, idx) {
@@ -393,25 +441,25 @@ $(document).ready(function(){
       body: formData
     })
     .then(response => {return response.json()})
-    .then(response => {            
-      if (response) {   
+    .then(response => {
+      if (response) {
 		//console.log(response);
 		// add tracking code here
 		sendPetitionTracking("2021-cwf_handbook");
-		  
-        closeBox();     
+
+        closeBox();
         openBox('#thanksBox');
-        
+
         //console.log(response)
       }
       hideFullPageLoading();
-      
+
     })
     .catch(error => {
       console.log(error);
       hideFullPageLoading();
-      // display the error message                      
-    });  
+      // display the error message
+    });
   }
   var shareUrl = window.location.href.split('?')[0]
   $('#shareFB').attr('href', 'https://www.facebook.com/sharer/sharer.php?u='+shareUrl);
