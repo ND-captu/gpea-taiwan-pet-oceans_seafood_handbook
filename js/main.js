@@ -1,3 +1,27 @@
+// fill utm fileds from qs
+function getJsonFromUrl(url) {
+  if(!url) url = location.search;
+  var query = url.substr(1);
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+}
+
+var qsJSON = getJsonFromUrl(window.location.search);
+var utmFields = ["UtmMedium",
+  "UtmSource",
+  "UtmCampaign",
+  "UtmContent",
+  "UtmTerm"]
+utmFields.forEach(function(item){
+  var mapkey = "utm_" + item.split("Utm")[1].toLowerCase();
+  if(qsJSON[mapkey]) $('#'+item).val(qsJSON[mapkey]);
+  //console.log(item + ": " + $('#'+item).val())
+});
+
 var change_server = "https://change.greenpeace.org.tw/2021/site/seafood/";
 
 (() => {
