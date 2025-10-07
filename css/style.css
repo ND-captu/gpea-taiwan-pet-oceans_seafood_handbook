@@ -518,6 +518,9 @@ input[type='button'] {
     margin: -17px 0 0 12.04379562%;
   }
 }
+.swiper-wrapper {
+  height: auto;
+}
 .kv .slider {
   width: 100%;
   margin: 0;
