@@ -382,24 +382,24 @@ $(document).ready(function () {
     }, 1100);
   };
 
-  const sendPetitionTracking = (eventLabel, eventValue) => {
-    console.log("sPT");
-    window.dataLayer = window.dataLayer || [];
-
-    window.dataLayer.push({
-      event: "gaEvent",
-      eventCategory: "petitions",
-      eventAction: "signup",
-      eventLabel: eventLabel,
-      eventValue: eventValue,
-    });
-
-    window.dataLayer.push({
-      event: "fbqEvent",
-      contentName: eventLabel,
-      contentCategory: "Petition Signup",
-    });
+  const objFilter = (obj, filters, positive = false) => {
+    const filtered = Object.fromEntries(
+      Object.entries(obj).filter(([key]) => {
+        // filters array as positive list or negative list
+        if (positive) {
+          return filters.some((filter) => key === filter);
+        } else {
+          return filters.every((filter) => key !== filter);
+        }
+      })
+    );
+    return filtered;
   };
+  const pushDataLayer = (props) => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(props);
+  };
+
 
   function signSubmit() {
     if (!$("#privacy").prop("checked")) {
@@ -432,6 +432,21 @@ $(document).ready(function () {
     formData.append('hubspotUtk', getHubSpotUtk());
 		formData.append('pageTitle', document.title);
 
+
+    const formDataObj = Object.fromEntries(formData);
+    pushDataLayer({
+      event: 'custom_event',
+      event_name: 'add_contact_info',
+      event_category: 'petitions',
+      event_action: 'click_submit',
+      fields: objFilter(formDataObj, [
+        'Email',
+        'FirstName',
+        'LastName',
+        'MobilePhone',
+      ]),
+    })
+
     fetch(document.querySelector("#sign-form").action, {
       method: "POST",
       body: formData,
@@ -443,8 +458,14 @@ $(document).ready(function () {
         if (response) {
           //console.log(response);
           // add tracking code here
-          sendPetitionTracking("2021-cwf_handbook");
-
+          
+          pushDataLayer({
+            event: 'custom_event',
+            event_name: 'petition_signup',
+            event_category: 'petitions',
+            event_action: 'signup',
+            event_label: '7012u000000P7uKAAS',
+          });
           closeBox();
           openBox("#thanksBox");
 
